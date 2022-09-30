@@ -1,6 +1,6 @@
 # 411
 
-Team 5 of Lab A2, 
+Team 5 of Lab A2
 
 ## Idea 1 - Food Analysis
  - Web app that will find [recipes](https://www.themealdb.com/api.php) of food and give you the [nutritional analysis](https://rapidapi.com/spoonacular/api/recipe-food-nutrition) of it 
