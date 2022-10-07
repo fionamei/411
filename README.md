@@ -3,7 +3,7 @@
 Team 5 of Lab A2
 
 ## Idea 1 - Food Analysis
- - Web app that will find [recipes](https://www.themealdb.com/api.php) of food and give you the [nutritional analysis](https://rapidapi.com/spoonacular/api/recipe-food-nutrition) of it. The idea of this project is to help users develop better eating habits, and become more aware of what they are ingesting. Our database in this app will hold information for user login such as name, email, password, and their starred recipes. 
+ - Web app that will find [recipes](https://www.themealdb.com/api.php) of food and give you the [nutritional analysis](https://rapidapi.com/spoonacular/api/recipe-food-nutrition) of it. The idea of this project is to help users develop better eating habits, and become more aware of what they are ingesting. Our database in this app will hold information for user login such as name, email, password, and their starred recipes. The limitations for this would be if results from the Recipes API cannot match to an acceptable input for Nutritritional Analysis API. 
  
 <!-- another nutrition analysis api alternative: https://developer.edamam.com/edamam-docs-nutrition-api -->
  
