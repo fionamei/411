@@ -1,6 +1,10 @@
 User Stories
 
-1. I want to be able to check the current weather data for my location
-2. I want to generate a random pokemon based on the local weather data
-3. I want to be able to log in with an authentication system
+1. I want to be able to log in with an authentication system, or create a new account
+  - google login integrated with our backend system (django), and set up our frontend (react), connecting both frontend and back
+2. I want to be able to check the current weather data for my location
+  - This user story is the main component of our app, this views the weather data and categorizes it for the condition that the random pokemon spawns from (ie. below 30 degrees spawns an ice type pokemon), and allows users to be able to use this web app to check weather data. 
+3. I want to generate a random pokemon based on the local weather data
+  - This user story is the other main component of our web app, generating a random pokemon based on the weather data. We will need to get the pokemon for the type that we want, and display it with images saved on this repo: https://github.com/PokeAPI/sprites
 4. I want to be able to save and display the pokemon in my pokedex 
+  - This saves the pokemon to the database, with a unique id, and displays the pokemon in a separate "pokedex" page
