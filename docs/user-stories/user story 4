@@ -1,5 +1,5 @@
 I want to be able to save and display the pokemon in my pokedex. This saves the pokemon to user's database, with the pokemon's unique id for the 
-pokemon, and displays the pokemon in a separate "pokedex" page. The pokedex page will take in all the unique pokemon id's that the user's database 
-has saved, and display them one by one. We will want to display the pictures of each pokemon along with their names and potentially their traits 
-as well. To get the pictures of each pokemon displayed, we will use the https://github.com/PokeAPI/sprites repository of the pokemon api, to generate 
-images for each pokemon. 
+pokemon appended to user saved pokemonsArray, and displays all caught pokemons in a separate "pokedex" page. The pokedex page will take in all 
+the unique pokemon id's that the user's database has saved, and display them one by one. We will want to display the pictures of each pokemon along 
+with their names and potentially their traits (ie. element) as well. To get the pictures of each pokemon displayed, we will use the 
+https://github.com/PokeAPI/sprites repository of the pokemon api, to generate images for each pokemon. 
