@@ -1,3 +1,4 @@
  I want to be able to log in with an authentication system, or create a new account
  Users will use google account to create a new account on our app. Then they can log in using their google account.
- google login integrated with our backend system (django), and set up our frontend (react), connecting both frontend and back
+ google login integrated with our backend system (django), and set up our frontend (react), connecting both frontend and back.
+
