@@ -1,0 +1,6 @@
+ I want to be able to search for a pokemon, and find what conditions it will appear under. This allows the users to see how they can catch the
+ specific pokemon they want. The database will have all the unique pokemon id's that the database contains. When the user searches the pokemons
+ name in a search bar it will make a call to the database to retrieve the appropriate pokemon id that is related to the name that is inputed and
+ it will display all the weather conditions in which that pokemon will be displayed in. To get the conditions that the pokemon will appear in, we
+ can manually set conditions, like temperature and weather, for pokemon of different element types. We can also randomly generate this data in the
+ beginning in order to generate conditions initially for the pokemon.
