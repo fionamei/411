@@ -1,0 +1,5 @@
+ I want to be able to check the current weather data for my location. This user story is the main component of our app, this views 
+ the weather data and categorizes it for the condition that the random pokemon spawns from (ie. below 30 degrees spawns an ice type pokemon), 
+ and allows users to be able to use this web app to check weather data. This might include having to get user's location, and then passing that
+ into the weather api to generate weather data. After generating weather data, we will need to be able to write functions that determines which
+ pokemon get spawned, and under which conditions they do. 
