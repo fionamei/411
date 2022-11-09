@@ -1,0 +1,11 @@
+We will be using two main tech stacks for our project:
+1. React.js
+  We chose to use React because it is a popular framework, with a lot of support and tutorials, which can help when we get stuck. It is powerful
+  and setting it up is very smooth. The process for choosing this framework is that we thought of some frontend tech stacks we could use, but almost
+  immediately agreed on React. 
+  
+2. Django 
+  We chose Django because it is user friendly, and beginner friendly. It is also a framework that is using Python mainly, which makes it very
+  intuitive as most of us have Python experience. We also decided to use this, because it has an in-built database we can hopefully take advantage of.
+  We also wanted to try something new, as none of us had used Django before. This framework is also very popular, and there are tutorials for 
+  using it with React, which makes our setting up, a lot better. 
