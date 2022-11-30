@@ -43,10 +43,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'django.contrib.sites',
-    'api',
+#django rest framework
+    'rest_framework.authtoken',
+    'rest_auth',
+#for social login
     'allauth',
     'allauth.account',
+    'rest_auth.registration',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
 ]
 
@@ -152,7 +157,7 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-SITE_ID = 2
+SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
