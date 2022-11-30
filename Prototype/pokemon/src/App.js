@@ -1,57 +1,48 @@
+import React, { Component } from 'react';
+import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from 'react-google-login';
+import fbLogin from "./services/fblogin.js"
+import googleLogin from "./services/googlelogin.js"
 import './App.css';
-import {useState} from 'react';
-import axios from 'axios';
 
-function App() {
-  const [pokemon, setpokemon] = useState([]);
-  const [name, setname] = useState('');
-  const hi = true
-  // useEffect(() => {
-  //   fetchData()
-  //     .catch(console.error);;
-  // }, [pokemon])
+class App extends Component {
 
-  const fetchData = async () => {
-    const url = 'http://127.0.0.1:8000/api/pokemon/info/'+name;
-    // const data = await fetch(url);
-    // const json = await data.json();
-    // console.log(json)
+  render() {
+    const responseFacebook = async (response) => {
+      let fbResponse  = await fbLogin(response.accessToken)
+      console.log(fbResponse);
+      console.log(response);
+    }
 
-    // setpokemon(json.pokemonData.name);
-    axios.get(url)
-      .then(res => {
-        if (res.data.status == true) {
-          setpokemon(res.data.pokemonData);
-        } else {
-          setpokemon([])
-          alert("Invalid pokemon")
-        }
-      })
-  };
+    const responseGoogle = async(response) => {
+      let googleResponse  = await googleLogin(response.accessToken)
+      console.log(googleResponse);
+      console.log(response);
+    }
 
-  const handleChange = event => {
-    setname(event.target.value);
-  };
-  
-return(
-  <div>
-    <input value={name } onChange={handleChange} />
-   {name && <button onClick={fetchData}>Click</button>}
-    <h2>Pokemon: {pokemon.name}</h2>
-    <h2>Image: <img src={pokemon.image}/> </h2>
-    <h2>Id: {pokemon.id}</h2>
-    <h2>Type: {pokemon.type}</h2>
-  </div>)
+    return (
+      <div className="App">
+        <h1>LOGIN WITH FACEBOOK AND GOOGLE</h1>
 
-  
+        <FacebookLogin
+          appId="<FACEBOOK APP ID>"
+          fields="name,email,picture"
+          callback={responseFacebook}
+        />
+        <br />
+        <br />
 
+
+        <GoogleLogin
+          clientId="<GOOGLE CLIENT ID>"
+          buttonText="LOGIN WITH GOOGLE"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+        />
+
+      </div>
+    );
+  }
 }
 
-// {pokemon.map(pokemon =>
-//   <div key={pokemon.id} className='pokemon_item'>
-//     <h1>{pokemon.name}</h1>
-//     {/* <img className='pokemon_image' src={pokemon.pokemonData.image}/> */}
-//   </div>)}
-
 export default App;
-
