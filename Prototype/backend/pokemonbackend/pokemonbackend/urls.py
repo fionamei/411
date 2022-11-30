@@ -19,5 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('api.urls')),
-    path('api/pokemon/info/<str:pokemon>', include('api.urls'))
+    path('api/pokemon/info/<str:pokemon>', include('api.urls')),
+    path('rest-auth/facebook/',  include('api.urls')),
+    path('rest-auth/google/',  include('api.urls'))
 ]
