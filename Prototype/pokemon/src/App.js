@@ -1,48 +1,30 @@
-import React, { Component } from 'react';
-import FacebookLogin from 'react-facebook-login';
-import GoogleLogin from 'react-google-login';
-import fbLogin from "./services/fblogin.js"
-import googleLogin from "./services/googlelogin.js"
+import React, { Component, useState } from 'react';
+// import FacebookLogin from 'react-facebook-login';
+// import GoogleLogin from 'react-google-login';
+// import fbLogin from "./services/fblogin.js"
+// import googleLogin from "./services/googlelogin.js"
 import './App.css';
+import firebase from 'firebase/compat/app';
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import Login from './login';
 
-class App extends Component {
+const App = () => {
+  // const [uid, setUID] = useState("")
+  // const firebaseApp = firebase.apps[0];
+  // const provider = new GoogleAuthProvider();
+  // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+  // const auth = getAuth();
+  // auth.languageCode = 'it';
+  // const user = auth.currentUser;
 
-  render() {
-    const responseFacebook = async (response) => {
-      let fbResponse  = await fbLogin(response.accessToken)
-      console.log(fbResponse);
-      console.log(response);
-    }
-
-    const responseGoogle = async(response) => {
-      let googleResponse  = await googleLogin(response.accessToken)
-      console.log(googleResponse);
-      console.log(response);
-    }
-
+  
     return (
       <div className="App">
-        <h1>LOGIN WITH FACEBOOK AND GOOGLE</h1>
-
-        <FacebookLogin
-          appId="<FACEBOOK APP ID>"
-          fields="name,email,picture"
-          callback={responseFacebook}
-        />
-        <br />
-        <br />
-
-
-        <GoogleLogin
-          clientId="<GOOGLE CLIENT ID>"
-          buttonText="LOGIN WITH GOOGLE"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-        />
-
+        <h1>LOGIN WITH GOOGLE</h1>
+        <Login />
       </div>
     );
-  }
+  
 }
 
 export default App;

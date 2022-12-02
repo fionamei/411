@@ -11,7 +11,7 @@ const googleLogin = async (accesstoken) => {
         access_token: accesstoken,
       }
     );
-    console.log(accesstoken);
+    console.log("ACCESS TOKEN IS " + res);
     return await res.status;
   };
 
