@@ -7,6 +7,7 @@ import './App.css';
 import firebase from 'firebase/compat/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 import Login from './login';
+import PokeInfo from './pokemonapitest';
 
 const App = () => {
   // const [uid, setUID] = useState("")
@@ -22,6 +23,7 @@ const App = () => {
       <div className="App">
         <h1>LOGIN WITH GOOGLE</h1>
         <Login />
+        <PokeInfo />
       </div>
     );
   

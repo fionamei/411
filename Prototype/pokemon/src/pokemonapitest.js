@@ -2,7 +2,7 @@ import './App.css';
 import {useState} from 'react';
 import axios from 'axios';
 
-function App() {
+export default function PokeInfo() {
   const [pokemon, setpokemon] = useState([]);
   const [name, setname] = useState('');
   const hi = true
@@ -53,5 +53,4 @@ return(
 //     {/* <img className='pokemon_image' src={pokemon.pokemonData.image}/> */}
 //   </div>)}
 
-export default App;
 
