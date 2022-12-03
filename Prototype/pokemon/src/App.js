@@ -1,18 +1,20 @@
 import './App.css';
-import {useState} from 'react';
+import {useState} from 'react'; // managing the data
 import axios from 'axios';
 
 function App() {
-  const [pokemon, setpokemon] = useState([]);
-  const [name, setname] = useState('');
-  const hi = true
+  //pokemon is a variable which holds the data
+  const [data, setData] = useState({}); // initially holding the empty array, setPokemon helps to change its data
+  const [zip, setzip] = useState('');
+
   // useEffect(() => {
   //   fetchData()
   //     .catch(console.error);;
   // }, [pokemon])
-
+  // functions are  reusable piece of code
   const fetchData = async () => {
-    const url = 'http://127.0.0.1:8000/api/pokemon/info/'+name;
+    // async means it will run in background
+    const url = 'http://127.0.0.1:8000/api/get_pokemon_for_location/'+zip;
     // const data = await fetch(url);
     // const json = await data.json();
     // console.log(json)
@@ -20,27 +22,43 @@ function App() {
     // setpokemon(json.pokemonData.name);
     axios.get(url)
       .then(res => {
-        if (res.data.status == true) {
-          setpokemon(res.data.pokemonData);
+        if (res.data.status === true) {
+          
+          setData(res.data);
         } else {
-          setpokemon([])
+          setData([])
           alert("Invalid pokemon")
         }
       })
   };
 
+  // click, dblclick, typing in textbox are types of events
+  // current event is onchange
   const handleChange = event => {
-    setname(event.target.value);
+    // it will get the value from event and set it to name using setname
+    setzip(event.target.value);
   };
   
 return(
   <div>
-    <input value={name } onChange={handleChange} />
-   {name && <button onClick={fetchData}>Click</button>}
-    <h2>Pokemon: {pokemon.name}</h2>
-    <h2>Image: <img src={pokemon.image}/> </h2>
-    <h2>Id: {pokemon.id}</h2>
-    <h2>Type: {pokemon.type}</h2>
+    {/* search bar */}
+    {/* whenever user starts typing in textbox, onchange triggers and it will call handleChange function */}
+    <input value={zip} onChange={handleChange} />
+    {/* if name is there,(if it is not empty) */}
+   {zip && <button onClick={fetchData}>Click</button>}
+
+    {'pokemonData' in data && <div>
+
+      <h2>Pokemon: {data.pokemonData.name}</h2>
+      <h2>Image: <img src={data.pokemonData.image}/> </h2>
+      <h2>Id: {data.pokemonData.id}</h2>
+      <h2>Type: {data.pokemonData.type}</h2>
+      <h2>Weather: {data.weather}</h2>
+      <h2>Temperature: {data.temperature}</h2>
+
+      </div>
+      }
+
   </div>)
 
   
