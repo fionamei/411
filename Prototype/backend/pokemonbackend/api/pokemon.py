@@ -82,3 +82,26 @@ def getPokemonForLocation(request, zip_country_code=""):
     
  
     return JsonResponse(res)
+
+def pokemonListInfo(request, pokemons=""):
+    #print(pokemons)
+    pokemonList = pokemons.split(',')
+    pokemonDictionary = []
+    for pokemon in pokemonList:
+        response = requests.get("https://pokeapi.co/api/v2/pokemon/" + pokemon)
+        if response:
+            info = response.json()
+            pokemonData = {}
+            typeInfo = info["types"][0]["type"]["name"]
+            pokemonData['id'] = info['id']
+            pokemonData["name"] = info['name']
+            pokemonData["type"] = typeInfo
+            pokemonData['image'] = info['sprites']['front_default']
+            pokemonDictionary.append(pokemonData)
+    dic = {}
+    if len(pokemonDictionary) > 0:
+        dic['status'] = True
+        dic['data'] = pokemonDictionary
+    else:
+        dic['status'] = False
+    return JsonResponse(dic)
