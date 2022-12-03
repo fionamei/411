@@ -18,7 +18,7 @@ def getPokemonInfo(request, pokemon=""):
         pokemonData['id'] = info['id']
         pokemonData["name"] = info['name']
         pokemonData["type"] = typeInfo
-        pokemonData['image'] = info['sprites']['back_default']
+        pokemonData['image'] = info['sprites']['front_default']
         res["pokemonData"] = pokemonData
     else:
         res["status"] = False
@@ -71,7 +71,7 @@ def getPokemonForLocation(request, zip_country_code=""):
                 pokemonData['id'] = info['id']
                 pokemonData["name"] = info['name']
                 pokemonData["type"] = typeInfo
-                pokemonData['image'] = info['sprites']['back_default']
+                pokemonData['image'] = info['sprites']['front_default']
                 res["pokemonData"] = pokemonData
            
                 
