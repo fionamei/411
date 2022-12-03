@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# React Pokedex Project
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started
+
+install packages using `npm install` command
+
 
 ## Available Scripts
 

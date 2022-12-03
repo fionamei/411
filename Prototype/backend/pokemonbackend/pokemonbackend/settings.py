@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 #django rest framework
     'rest_framework.authtoken',
-    'rest_auth',
+    'dj_rest_auth',
 #for social login
     'allauth',
     'allauth.account',

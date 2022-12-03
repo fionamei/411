@@ -4,8 +4,9 @@ import React, { Component, useState } from 'react';
 // import fbLogin from "./services/fblogin.js"
 // import googleLogin from "./services/googlelogin.js"
 import './App.css';
-import {useState} from 'react'; // managing the data
+ // managing the data
 import axios from 'axios';
+import Login from './login';
 
 function App() {
   //pokemon is a variable which holds the data
@@ -45,7 +46,10 @@ function App() {
   };
   
 return(
-  <div>
+  <div className="App">
+        <h1>LOGIN WITH GOOGLE</h1>
+        <Login />
+
     {/* search bar */}
     {/* whenever user starts typing in textbox, onchange triggers and it will call handleChange function */}
     <input value={zip} onChange={handleChange} />
@@ -67,12 +71,7 @@ return(
   </div>)
 
   
-    return (
-      <div className="App">
-        <h1>LOGIN WITH GOOGLE</h1>
-        <Login />
-      </div>
-    );
+    
   
 }
 
