@@ -1,3 +1,8 @@
+import React, { Component, useState } from 'react';
+// import FacebookLogin from 'react-facebook-login';
+// import GoogleLogin from 'react-google-login';
+// import fbLogin from "./services/fblogin.js"
+// import googleLogin from "./services/googlelogin.js"
 import './App.css';
 import {useState} from 'react'; // managing the data
 import axios from 'axios';
@@ -62,14 +67,13 @@ return(
   </div>)
 
   
-
+    return (
+      <div className="App">
+        <h1>LOGIN WITH GOOGLE</h1>
+        <Login />
+      </div>
+    );
+  
 }
 
-// {pokemon.map(pokemon =>
-//   <div key={pokemon.id} className='pokemon_item'>
-//     <h1>{pokemon.name}</h1>
-//     {/* <img className='pokemon_image' src={pokemon.pokemonData.image}/> */}
-//   </div>)}
-
 export default App;
-

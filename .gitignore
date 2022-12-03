@@ -1,4 +1,4 @@
-.pyc
+*.pyc
 node_modules/
 __pycache__/
 build/
@@ -11,3 +11,4 @@ npm-debug.log*
 django/
 /django/
 django
+*.env
