@@ -9,7 +9,7 @@ import axios from 'axios';
 import Login from './pages/login';
 import PokeInfo from './pages/pokemonapitest';
 import WeatherPoke from './pages/pokemonWeather';
-
+import PokeListInfo from './pages/pokemonListInfo';
 function App() {
   
 return(
@@ -18,6 +18,7 @@ return(
         <Login />
         {/* <PokeInfo /> */}
         <WeatherPoke />
+        <PokeListInfo />
       </div>
   )
 
