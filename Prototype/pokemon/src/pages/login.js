@@ -46,7 +46,7 @@ export default function Login() {
   return (
     <div>
          <button onClick={signInWithGoogle}>Log in with Google</button>
-        <h2>Hello {uid} </h2>
+        <h2>Hello {user.displayName} </h2>
     </div>
   )
 }

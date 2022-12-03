@@ -42,7 +42,7 @@ def getPokemonForLocation(request, zip_country_code=""):
         lat = geo_data['lat']
         lon = geo_data['lon']
     
-        weather_response = requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}")
+        weather_response = requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}&units=imperial")
         if weather_response:
             #print('weahter')
             #print(weather_response.status_code)
