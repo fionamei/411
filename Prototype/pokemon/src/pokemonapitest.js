@@ -41,10 +41,8 @@ return(
     <h2>Image: <img src={pokemon.image}/> </h2>
     <h2>Id: {pokemon.id}</h2>
     <h2>Type: {pokemon.type}</h2>
-  </div>)
-
-  
-
+  </div>
+  )
 }
 
 // {pokemon.map(pokemon =>

@@ -35,7 +35,7 @@ export default function Login() {
         });
 
         onAuthStateChanged(auth, (user) => {
-        if (user) {
+        if (user) { 
             const uid = user.uid;
             setUID(uid);
         }
