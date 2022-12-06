@@ -4,7 +4,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from
 
 export default function Login() {
 
-    const [uid, setUID] = useState("");
+    const [displayName, setDisplayName] = useState("");
     const firebaseApp = firebase.apps[0];
     const provider = new GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
@@ -36,8 +36,8 @@ export default function Login() {
 
         onAuthStateChanged(auth, (user) => {
         if (user) {
-            const uid = user.uid;
-            setUID(uid);
+            const name = user.displayName;
+            setDisplayName(name);
         }
         }); 
 
@@ -46,7 +46,7 @@ export default function Login() {
   return (
     <div>
          <button onClick={signInWithGoogle}>Log in with Google</button>
-        <h2>Hello {uid} </h2>
+        <h2>Hello {displayName} </h2>
     </div>
   )
 }

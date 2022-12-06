@@ -20,7 +20,7 @@ from api.urls import FacebookLogin,GoogleLogin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('api.urls')),
-    path('api/pokemon/info/<str:pokemon>', include('api.urls')),
-    path('rest-auth/facebook/', FacebookLogin.as_view(), name='fb_login'),
-    path('rest-auth/google/', GoogleLogin.as_view(), name='google_login')
+    #path('api/pokemon/info/<str:pokemon>', include('api.urls')),
+    #path('rest-auth/facebook/', FacebookLogin.as_view(), name='fb_login'),
+    #path('rest-auth/google/', GoogleLogin.as_view(), name='google_login')
 ]

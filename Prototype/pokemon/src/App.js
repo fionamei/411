@@ -9,7 +9,7 @@ import axios from 'axios';
 import Login from './pages/login';
 import PokeInfo from './pages/pokemonapitest';
 import WeatherPoke from './pages/pokemonWeather';
-
+import PokeListInfo from './pages/pokemonListInfo';
 function App() {
 
 return(
@@ -17,6 +17,7 @@ return(
         <h1>LOGIN WITH GOOGLE</h1>
         <Login />
         <WeatherPoke />
+        <PokeListInfo />
       </div>
   )
   
