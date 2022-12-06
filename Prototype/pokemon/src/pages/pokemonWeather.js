@@ -3,7 +3,7 @@ import axios from 'axios';
 import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { doc, updateDoc, arrayUnion, setDoc} from "firebase/firestore";
+import { doc, updateDoc, arrayUnion, arrayRemove} from "firebase/firestore";
 
 
 export default function WeatherPoke() {
@@ -49,9 +49,13 @@ export default function WeatherPoke() {
       const pokemonref = doc(db, "userdata", user.uid);
 
       // // Atomically add a new region to the "regions" array field.
+      // updateDoc(pokemonref, {
+      //   pokemonIDS: arrayRemove(data.pokemonData.id)
+      // });
       updateDoc(pokemonref, {
         pokemonIDS: arrayUnion(data.pokemonData.id)
       });
+
     };
   
     const handleChange = event => {
