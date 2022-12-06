@@ -11,18 +11,14 @@ import PokeInfo from './pages/pokemonapitest';
 import WeatherPoke from './pages/pokemonWeather';
 
 function App() {
-  
+
 return(
   <div className="App">
         <h1>LOGIN WITH GOOGLE</h1>
         <Login />
-        {/* <PokeInfo /> */}
         <WeatherPoke />
       </div>
   )
-
-  
-    
   
 }
 
