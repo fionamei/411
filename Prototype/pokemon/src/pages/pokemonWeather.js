@@ -10,35 +10,6 @@ export default function WeatherPoke() {
     const [data, setData] = useState({}); // initially holding the empty array, setPokemon helps to change its data
     const [zip, setzip] = useState('');
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCFSwqeLKS3e8nebyFsOWCnzE6eqRLQ-xo",
-      authDomain: "weathermon-370220.firebaseapp.com",
-      projectId: "weathermon-370220",
-      storageBucket: "weathermon-370220.appspot.com",
-      messagingSenderId: "479306296760",
-      appId: "1:479306296760:web:bc86e82cc1c7bbd463b34d",
-      measurementId: "G-Y0VKT2KBTW"
-    };
-    
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    // Initialize Cloud Firestore and get a reference to the service
-    const db = getFirestore(app);
-
-    const auth = getAuth();
-    const user = auth.currentUser;
-    if (user.uid){
-      // const passeddata = {
-      //   "pokeData": data.pokemonData.id
-      // }
-      // setDoc(doc(db, "userdata", user.uid), passeddata);
-      const pokemonref = doc(db, "userdata", user.uid);
-
-      // // Atomically add a new region to the "regions" array field.
-      updateDoc(pokemonref, {
-        pokemonIDS: arrayUnion(data.pokemonData.id)
-      });
-    }
   
     const fetchData = async () => {
       // async means it will run in background
@@ -58,6 +29,29 @@ export default function WeatherPoke() {
             alert("Invalid pokemon")
           }
         })
+      const firebaseConfig = {
+        apiKey: "AIzaSyCFSwqeLKS3e8nebyFsOWCnzE6eqRLQ-xo",
+        authDomain: "weathermon-370220.firebaseapp.com",
+        projectId: "weathermon-370220",
+        storageBucket: "weathermon-370220.appspot.com",
+        messagingSenderId: "479306296760",
+        appId: "1:479306296760:web:bc86e82cc1c7bbd463b34d",
+        measurementId: "G-Y0VKT2KBTW"
+      };
+        
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      // Initialize Cloud Firestore and get a reference to the service
+      const db = getFirestore(app);
+    
+      const auth = getAuth();
+      const user = auth.currentUser;
+      const pokemonref = doc(db, "userdata", user.uid);
+
+      // // Atomically add a new region to the "regions" array field.
+      updateDoc(pokemonref, {
+        pokemonIDS: arrayUnion(data.pokemonData.id)
+      });
     };
   
     const handleChange = event => {
