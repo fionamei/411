@@ -57,6 +57,9 @@ def getPokemonForLocation(request, zip_country_code=""):
             #  read pokemonData.json file
             pokemonFile = open(os.path.join(current_dir, 'pokemonData.json'))
             pokemonData = json.load(pokemonFile)
+
+            if weather_condition not in pokemonData:
+                weather_condition = "Atmosphere"
             pokemon = random.choice(pokemonData[weather_condition])
             
             ## add more!
