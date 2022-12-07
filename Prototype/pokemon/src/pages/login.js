@@ -55,7 +55,7 @@ export default function Login() {
   return (
     <div>
          <button onClick={signInWithGoogle}>Log in with Google</button>
-        <h2>Hello {displayName} </h2>
+        <h2>Hello {displayName}! </h2>
     </div>
   )
 }
