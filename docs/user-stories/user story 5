@@ -1,6 +1,6 @@
- I want to be able to search for a pokemon, and find what conditions it will appear under. This allows the users to see how they can catch the
- specific pokemon they want. The database will have all the unique pokemon id's that the database contains. When the user searches the pokemons
- name in a search bar it will make a call to the database to retrieve the appropriate pokemon id that is related to the name that is inputed and
- it will display all the weather conditions in which that pokemon will be displayed in. To get the conditions that the pokemon will appear in, we
- can manually set conditions, like temperature and weather, for pokemon of different element types. We can also randomly generate this data in the
- beginning in order to generate conditions initially for the pokemon.
+I want to be able to display the pokemon in my pokedex. This takes the pokemon from user's database, with the pokemon's unique id for the 
+pokemon in a saved pokemonsArray, and displays all caught pokemons as a list on the page after a button is clicked to call a function to display 
+the pokemon. The pokedex page will take in all the unique pokemon id's that the user's database has saved, and display them one by one. 
+We will want to display the pictures of each pokemon along with their names and potentially their traits (ie. element) as well. 
+To get the pictures of each pokemon displayed, we will use the  https://github.com/PokeAPI/sprites repository of the pokemon api, to generate 
+images for each pokemon. 
