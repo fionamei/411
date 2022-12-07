@@ -81,30 +81,6 @@ export default function PokeListInfo(){
                 <th>{cardPoke(pokemon[0].name, pokemon[0].image, pokemon[0].type)}</th>
                 <th>{cardPoke(pokemon[1].name, pokemon[1].image, pokemon[1].type)}</th>
                 <th>{cardPoke(pokemon[2].name, pokemon[2].image, pokemon[2].type)}</th>
-                {/* <Card>
-                    <CardContent>
-                    <h2>Pokemon: {pokemon[0].name}</h2>
-                    <h2><img src={pokemon[0].image} alt={pokemon.name}/> </h2>
-                    <h2>Type: {pokemon[0].type}</h2>
-                    </CardContent>
-                    
-                </Card> */}
-                {/* <th>
-                    <h2>Pokemon: {pokemon[0].name}</h2>
-                    <h2><img src={pokemon[0].image} alt={pokemon.name}/> </h2>
-                    <h2>Type: {pokemon[0].type}</h2>
-                </th> */}
-
-                {/* <th>
-                    <h2>Pokemon: {pokemon[1].name}</h2>
-                    <h2><img src={pokemon[1].image} alt={pokemon.name}/> </h2>
-                    <h2>Type: {pokemon[1].type}</h2>
-                </th>
-                <th>
-                    <h2>Pokemon: {pokemon[2].name}</h2>
-                    <h2><img src={pokemon[2].image} alt={pokemon.name}/> </h2>
-                    <h2>Type: {pokemon[2].type}</h2>
-                </th> */}
             </tr>
             </table>
             )
@@ -112,19 +88,8 @@ export default function PokeListInfo(){
             return(
                 <table key={index} cellPadding="20" cellSpacing="0">
                 <tr>
-                <th>{cardPoke(pokemon[0].name, pokemon[0].image, pokemon[0].type)}</th>
-                <th>{cardPoke(pokemon[1].name, pokemon[1].image, pokemon[1].type)}</th>
-                    {/* <th>
-                        <h2>Pokemon: {pokemon[0].name}</h2>
-                        <h2><img src={pokemon[0].image} alt={pokemon.name}/> </h2>
-                        <h2>Type: {pokemon[0].type}</h2>
-                    </th>
-
-                    <th>
-                        <h2>Pokemon: {pokemon[1].name}</h2>
-                        <h2><img src={pokemon[1].image} alt={pokemon.name}/> </h2>
-                        <h2>Type: {pokemon[1].type}</h2>
-                    </th> */}
+                    <th>{cardPoke(pokemon[0].name, pokemon[0].image, pokemon[0].type)}</th>
+                    <th>{cardPoke(pokemon[1].name, pokemon[1].image, pokemon[1].type)}</th>
                 </tr>
                 </table> 
             )
@@ -133,12 +98,6 @@ export default function PokeListInfo(){
                 <table key={index} cellPadding="20" cellSpacing="0">
                 <tr>
                     <th>{cardPoke(pokemon[0].name, pokemon[0].image, pokemon[0].type)}</th>
-                
-                    {/* <th>
-                        <h2>Pokemon: {pokemon[0].name}</h2>
-                        <h2><img src={pokemon[0].image} alt={pokemon.name}/> </h2>
-                        <h2>Type: {pokemon[0].type}</h2>
-                    </th> */}
                 </tr>
                 </table>
             )
