@@ -10,11 +10,24 @@ export default function PokeListInfo(){
     const [pokeList, setPokeList] = useState("")
 
     const colors = {
-        "normal":"grey",
-        "water":'blue',
-        "fire":'#F8AEA1',
-        "psychic":'purple',
-        "ice": 'light-blue'
+        "normal": '#E0DAD9',
+        "fighting": '#C84731',
+        "flying": '#',
+        "poison": '#',
+        "ground": '#',
+        "rock": '#',
+        "bug": '#',
+        "ghost": '#',
+        "steel": '#',
+        "fire": '#FA5858',
+        "water": '#6A91FF',
+        "grass": '#95F386',
+        "electric": '#',
+        "psychic": '#C879C3',
+        "ice": '#6AD6FF',
+        "dragon": '#',
+        "dark": '#6A6161',
+        "fairy": '#'
     }
 
     const fetchData = async (list) =>  {
@@ -56,7 +69,7 @@ export default function PokeListInfo(){
         >
             <h2>{name}</h2>
             <h1><img src={image} alt={name}/> </h1>
-            {/* <h2>Type: {type}</h2> */}
+            <h2>{type}</h2>
         </Card>)
     };
 
