@@ -3,41 +3,85 @@ import axios from 'axios';
 
 export default function PokeListInfo(){
     const [pokemonData, setpokemonData] = useState([])
-    const pokemonList = '1,2,3,11,43,13,342,241,52'
+    const pokemonList = '1,2,3,4,5,6,7'
     const fetchData = async () =>  {
         const url = 'http://127.0.0.1:8000/api/pokemon_list_info/'+pokemonList
         axios.get(url)
             .then(res => {
                 console.log(res)
                 if(res.data.status === true){
-                    setpokemonData(res.data.data)
+                    const newData = [];
+                    while(res.data.data.length) newData.push(res.data.data.splice(0,3));
+                    console.log(newData)
+                    setpokemonData(newData)
                     console.log(pokemonData)
                 }
             })
     };
-    const arrayChunk = (arr, n) => {
-        const array = arr.slice();
-        const chunks = [];
-        while (array.length) chunks.push(array.splice(0,n));
-        return chunks;
-    }
 
     const mapPokemon = pokemonData.map((pokemon,index) => {
-        console.log('hello')
+        //console.log('hello')
+        if(pokemon.length==3){
         return(
-            <span>
-                <h2>Pokemon: {pokemon.name}</h2>
-                <h2>Image: <img src={pokemon.image}/> </h2>
-                <h2>Id: {pokemon.id}</h2>
-                <h2>Type: {pokemon.type}</h2>
-            </span>)
+            <table cellpadding="20" cellspacing="0">
+            <tr>
+                <th>
+                    <h2>Pokemon: {pokemon[0].name}</h2>
+                    <h2><img src={pokemon[0].image} alt={pokemon.name}/> </h2>
+                    <h2>Type: {pokemon[0].type}</h2>
+                </th>
+
+                <th>
+                    <h2>Pokemon: {pokemon[1].name}</h2>
+                    <h2><img src={pokemon[1].image} alt={pokemon.name}/> </h2>
+                    <h2>Type: {pokemon[1].type}</h2>
+                </th>
+                <th>
+                    <h2>Pokemon: {pokemon[2].name}</h2>
+                    <h2><img src={pokemon[2].image} alt={pokemon.name}/> </h2>
+                    <h2>Type: {pokemon[2].type}</h2>
+                </th>
+            </tr>
+            </table>
+            )
+        }else if(pokemon.length==2){
+            return(
+                <table cellpadding="20" cellspacing="0">
+                <tr>
+                    <th>
+                        <h2>Pokemon: {pokemon[0].name}</h2>
+                        <h2><img src={pokemon[0].image} alt={pokemon.name}/> </h2>
+                        <h2>Type: {pokemon[0].type}</h2>
+                    </th>
+
+                    <th>
+                        <h2>Pokemon: {pokemon[1].name}</h2>
+                        <h2><img src={pokemon[1].image} alt={pokemon.name}/> </h2>
+                        <h2>Type: {pokemon[1].type}</h2>
+                    </th>
+                </tr>
+                </table> 
+            )
+        }else{
+            return(
+                <table cellpadding="20" cellspacing="0">
+                <tr>
+                    <th>
+                        <h2>Pokemon: {pokemon[0].name}</h2>
+                        <h2><img src={pokemon[0].image} alt={pokemon.name}/> </h2>
+                        <h2>Type: {pokemon[0].type}</h2>
+                    </th>
+                </tr>
+                </table>
+            )
+        }
     }
     )  
 
     return (
     <div>
         <button onClick={fetchData}>saved pokemons</button>
-        {mapPokemon}
+        <center> {mapPokemon} </center>
         </div>
     )
 
