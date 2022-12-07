@@ -1,6 +1,8 @@
 import React, { Component, useState } from 'react';
 import firebase from 'firebase/compat/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import {db, auth} from '../index';
+import { doc, getDocs, getDoc, updateDoc, arrayUnion, arrayRemove, setDoc} from "firebase/firestore";
 
 export default function Login() {
 
@@ -10,7 +12,6 @@ export default function Login() {
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
     const auth = getAuth();
     auth.languageCode = 'it';
-    const user = auth.currentUser;
 
     const signInWithGoogle = async () => {
         await signInWithPopup(auth, provider)
@@ -22,26 +23,34 @@ export default function Login() {
         const user = result.user;
         // ...
         console.log("user is " + user);
+        
       }).catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-        console.log("error is " + errorMessage);
+        console.log("error code " + errorCode + ", error is " + errorMessage);
         });
 
         onAuthStateChanged(auth, (user) => {
         if (user) {
             const name = user.displayName;
             setDisplayName(name);
+            updateUser(user);
         }
         }); 
 
-        }
+        };
+        
+  async function updateUser(user) {
+    const docRef = doc(db, "userdata", user.uid);
+    const docSnap = await getDoc(docRef); 
+
+    if (!docSnap.exists()) {  //if the user is not already in the database it adds the proper user id
+      setDoc(doc(db, "userdata", user.uid), {
+        pokemonIDs: []
+      });
+    }
+  }
 
   return (
     <div>
