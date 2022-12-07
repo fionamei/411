@@ -1,6 +1,4 @@
- I want to be able to log in with an authentication system, or create a new account
- Users will use google account to create a new account on our app. Then they can log in using their google account.To prevent hackers, users need to go through another
- layer of security check by entering the letters appear on the picture the app display.
- Setting up backend with django and create database in django. Users' first name, last name, email address will be saved to the data base.
- Setting up frontend with react, connecting both frontend and backend.
+ I want to be able to login and sign up with Google authentication. This will be done using Firebase, so that the user's database gets initialized
+ if it's their first time on the app. Otherwise, it just gets their information. Displays a welcome message for the user to see. 
+ We also want to set up the frontend and backend with react, django, and firebase. 
 
