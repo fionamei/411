@@ -2,10 +2,20 @@ import {useState} from 'react';
 import axios from 'axios';
 import { db, auth } from '..';
 import { doc, getDoc } from 'firebase/firestore';
+import Card from '@mui/material/Card';
+
 
 export default function PokeListInfo(){
     const [pokemonData, setpokemonData] = useState([])
     const [pokeList, setPokeList] = useState("")
+
+    const colors = {
+        "normal":"grey",
+        "water":'blue',
+        "fire":'#F8AEA1',
+        "psychic":'purple',
+        "ice": 'light-blue'
+    }
 
     const fetchData = async (list) =>  {
         console.log("fetching data")
@@ -36,20 +46,43 @@ export default function PokeListInfo(){
             // doc.data() will be undefined in this case
             console.log("No such document!")
           }
-    }
+    };
+
+    function cardPoke(name, image, type) {
+        return (
+        <Card
+            sx={{ minWidth: 275 }}
+            style={{backgroundColor: `${colors[type]}`}}
+        >
+            <h2>{name}</h2>
+            <h1><img src={image} alt={name}/> </h1>
+            {/* <h2>Type: {type}</h2> */}
+        </Card>)
+    };
 
     const mapPokemon = pokemonData.map((pokemon,index) => {
         if(pokemon.length==3){
         return(
             <table key={index} cellPadding="20" cellSpacing="0">
             <tr>
-                <th>
+                <th>{cardPoke(pokemon[0].name, pokemon[0].image, pokemon[0].type)}</th>
+                <th>{cardPoke(pokemon[1].name, pokemon[1].image, pokemon[1].type)}</th>
+                <th>{cardPoke(pokemon[2].name, pokemon[2].image, pokemon[2].type)}</th>
+                {/* <Card>
+                    <CardContent>
                     <h2>Pokemon: {pokemon[0].name}</h2>
                     <h2><img src={pokemon[0].image} alt={pokemon.name}/> </h2>
                     <h2>Type: {pokemon[0].type}</h2>
-                </th>
+                    </CardContent>
+                    
+                </Card> */}
+                {/* <th>
+                    <h2>Pokemon: {pokemon[0].name}</h2>
+                    <h2><img src={pokemon[0].image} alt={pokemon.name}/> </h2>
+                    <h2>Type: {pokemon[0].type}</h2>
+                </th> */}
 
-                <th>
+                {/* <th>
                     <h2>Pokemon: {pokemon[1].name}</h2>
                     <h2><img src={pokemon[1].image} alt={pokemon.name}/> </h2>
                     <h2>Type: {pokemon[1].type}</h2>
@@ -58,7 +91,7 @@ export default function PokeListInfo(){
                     <h2>Pokemon: {pokemon[2].name}</h2>
                     <h2><img src={pokemon[2].image} alt={pokemon.name}/> </h2>
                     <h2>Type: {pokemon[2].type}</h2>
-                </th>
+                </th> */}
             </tr>
             </table>
             )
@@ -66,7 +99,9 @@ export default function PokeListInfo(){
             return(
                 <table key={index} cellPadding="20" cellSpacing="0">
                 <tr>
-                    <th>
+                <th>{cardPoke(pokemon[0].name, pokemon[0].image, pokemon[0].type)}</th>
+                <th>{cardPoke(pokemon[1].name, pokemon[1].image, pokemon[1].type)}</th>
+                    {/* <th>
                         <h2>Pokemon: {pokemon[0].name}</h2>
                         <h2><img src={pokemon[0].image} alt={pokemon.name}/> </h2>
                         <h2>Type: {pokemon[0].type}</h2>
@@ -76,7 +111,7 @@ export default function PokeListInfo(){
                         <h2>Pokemon: {pokemon[1].name}</h2>
                         <h2><img src={pokemon[1].image} alt={pokemon.name}/> </h2>
                         <h2>Type: {pokemon[1].type}</h2>
-                    </th>
+                    </th> */}
                 </tr>
                 </table> 
             )
@@ -84,11 +119,13 @@ export default function PokeListInfo(){
             return(
                 <table key={index} cellPadding="20" cellSpacing="0">
                 <tr>
-                    <th>
+                    <th>{cardPoke(pokemon[0].name, pokemon[0].image, pokemon[0].type)}</th>
+                
+                    {/* <th>
                         <h2>Pokemon: {pokemon[0].name}</h2>
                         <h2><img src={pokemon[0].image} alt={pokemon.name}/> </h2>
                         <h2>Type: {pokemon[0].type}</h2>
-                    </th>
+                    </th> */}
                 </tr>
                 </table>
             )
@@ -97,7 +134,7 @@ export default function PokeListInfo(){
     )  
 
     return (
-    <div>
+        <div>
         <button onClick={getSavedPokemons}>saved pokemons</button>
         <center> {mapPokemon} </center>
         </div>
