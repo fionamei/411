@@ -3,32 +3,16 @@ import axios from 'axios';
 import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { doc, updateDoc, arrayUnion, arrayRemove} from "firebase/firestore";
+import { doc, getDocs, getDoc, updateDoc, arrayUnion, arrayRemove, setDoc} from "firebase/firestore";
 
 
 export default function WeatherPoke() {
     const [data, setData] = useState({}); // initially holding the empty array, setPokemon helps to change its data
     const [zip, setzip] = useState('');
 
-  
+
     const fetchData = async () => {
       // async means it will run in background
-      const url = 'http://127.0.0.1:8000/api/get_pokemon_for_location/'+zip;
-      // const data = await fetch(url);
-      // const json = await data.json();
-      // console.log(json)
-  
-      // setpokemon(json.pokemonData.name);
-      axios.get(url)
-        .then(res => {
-          if (res.data.status === true) {
-            
-            setData(res.data);
-          } else {
-            setData([])
-            alert("Invalid pokemon")
-          }
-        })
       const firebaseConfig = {
         apiKey: "AIzaSyCFSwqeLKS3e8nebyFsOWCnzE6eqRLQ-xo",
         authDomain: "weathermon-370220.firebaseapp.com",
@@ -46,6 +30,16 @@ export default function WeatherPoke() {
     
       const auth = getAuth();
       const user = auth.currentUser;
+      
+      const docRef = doc(db, "userdata", user.uid);
+      const docSnap = await getDoc(docRef); 
+
+      if (!docSnap.exists()) {  //if the user is not already in the database it adds the proper user id
+        setDoc(doc(db, "userdata", user.uid), {
+          pokemonIDs: []
+        });
+      }
+      
       const pokemonref = doc(db, "userdata", user.uid);
 
       // // Atomically add a new region to the "regions" array field.
@@ -53,9 +47,26 @@ export default function WeatherPoke() {
       //   pokemonIDS: arrayRemove(data.pokemonData.id)
       // });
       updateDoc(pokemonref, {
-        pokemonIDS: arrayUnion(data.pokemonData.id)
+        pokemonIDs: arrayUnion(data.pokemonData.id)
       });
 
+      const url = 'http://127.0.0.1:8000/api/get_pokemon_for_location/'+zip;
+      // const data = await fetch(url);
+      // const json = await data.json();
+      // console.log(json)
+  
+      // setpokemon(json.pokemonData.name);
+      axios.get(url)
+        .then(res => {
+          if (res.data.status === true) {
+            
+            setData(res.data);
+          } else {
+            setData([])
+            alert("Invalid pokemon")
+          }
+        })
+  
     };
   
     const handleChange = event => {
