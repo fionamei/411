@@ -12,22 +12,22 @@ export default function PokeListInfo(){
     const colors = {
         "normal": '#E0DAD9',
         "fighting": '#C84731',
-        "flying": '#',
-        "poison": '#',
-        "ground": '#',
-        "rock": '#',
-        "bug": '#',
-        "ghost": '#',
-        "steel": '#',
+        "flying": '#2ED4E8',
+        "poison": '#521483',
+        "ground": '#023C10',
+        "rock": '#135223',
+        "bug": '#1BB809',
+        "ghost": '#69507C',
+        "steel": '#847B8B',
         "fire": '#FA5858',
         "water": '#6A91FF',
         "grass": '#95F386',
-        "electric": '#',
+        "electric": '#CAE50C',
         "psychic": '#C879C3',
         "ice": '#6AD6FF',
-        "dragon": '#',
+        "dragon": '#CAE50C',
         "dark": '#6A6161',
-        "fairy": '#'
+        "fairy": '#E41ABC'
     }
 
     const fetchData = async (list) =>  {

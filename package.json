@@ -1,5 +1,9 @@
 {
   "dependencies": {
-    "firebase": "^9.14.0"
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.17",
+    "firebase": "^9.14.0",
+    "npm": "^9.1.3"
   }
 }
