@@ -17,19 +17,6 @@ export default function WeatherPoke() {
       // const data = await fetch(url);
       // const json = await data.json();
       // console.log(json)
-  
-      // setpokemon(json.pokemonData.name);
-      axios.get(url)
-        .then(res => {
-          if (res.data.status === true) {
-            
-            setData(res.data);
-          } else {
-            setData([])
-            alert("Invalid pokemon")
-          }
-        })
-              // async means it will run in background
       const firebaseConfig = {
         apiKey: "AIzaSyCFSwqeLKS3e8nebyFsOWCnzE6eqRLQ-xo",
         authDomain: "weathermon-370220.firebaseapp.com",
@@ -39,15 +26,14 @@ export default function WeatherPoke() {
         appId: "1:479306296760:web:bc86e82cc1c7bbd463b34d",
         measurementId: "G-Y0VKT2KBTW"
       };
-        
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       // Initialize Cloud Firestore and get a reference to the service
       const db = getFirestore(app);
-    
+
       const auth = getAuth();
       const user = auth.currentUser;
-      
+
       const docRef = doc(db, "userdata", user.uid);
       const docSnap = await getDoc(docRef); 
 
@@ -56,17 +42,26 @@ export default function WeatherPoke() {
           pokemonIDs: []
         });
       }
-      
-      const pokemonref = doc(db, "userdata", user.uid);
-
+  
+      // setpokemon(json.pokemonData.name);
+      axios.get(url)
+        .then(res => {
+          if (res.data.status === true) {
+            setData(res.data);
+            const pokemonref = doc(db, "userdata", user.uid);
+            updateDoc(pokemonref, {
+              pokemonIDs: arrayUnion(data.pokemonData.id)
+            });
+          } else {
+              setData([])
+              alert("Invalid pokemon")
+            }
+          })
       // // Atomically add a new region to the "regions" array field.
       // updateDoc(pokemonref, {
       //   pokemonIDS: arrayRemove(data.pokemonData.id)
       // });
-      updateDoc(pokemonref, {
-        pokemonIDs: arrayUnion(data.pokemonData.id)
-      });
-  
+      // async means it will run in background
     };
   
     const handleChange = event => {
