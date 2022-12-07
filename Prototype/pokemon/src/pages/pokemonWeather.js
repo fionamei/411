@@ -12,7 +12,24 @@ export default function WeatherPoke() {
 
 
     const fetchData = async () => {
-      // async means it will run in background
+
+      const url = 'http://127.0.0.1:8000/api/get_pokemon_for_location/'+zip;
+      // const data = await fetch(url);
+      // const json = await data.json();
+      // console.log(json)
+  
+      // setpokemon(json.pokemonData.name);
+      axios.get(url)
+        .then(res => {
+          if (res.data.status === true) {
+            
+            setData(res.data);
+          } else {
+            setData([])
+            alert("Invalid pokemon")
+          }
+        })
+              // async means it will run in background
       const firebaseConfig = {
         apiKey: "AIzaSyCFSwqeLKS3e8nebyFsOWCnzE6eqRLQ-xo",
         authDomain: "weathermon-370220.firebaseapp.com",
@@ -49,23 +66,6 @@ export default function WeatherPoke() {
       updateDoc(pokemonref, {
         pokemonIDs: arrayUnion(data.pokemonData.id)
       });
-
-      const url = 'http://127.0.0.1:8000/api/get_pokemon_for_location/'+zip;
-      // const data = await fetch(url);
-      // const json = await data.json();
-      // console.log(json)
-  
-      // setpokemon(json.pokemonData.name);
-      axios.get(url)
-        .then(res => {
-          if (res.data.status === true) {
-            
-            setData(res.data);
-          } else {
-            setData([])
-            alert("Invalid pokemon")
-          }
-        })
   
     };
   
