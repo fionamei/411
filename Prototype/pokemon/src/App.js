@@ -10,12 +10,13 @@ import Login from './pages/login';
 import PokeInfo from './pages/pokemonapitest';
 import WeatherPoke from './pages/pokemonWeather';
 import PokeListInfo from './pages/pokemonListInfo';
+
 function App() {
 
 return(
   <div className="App">
-        <h1>LOGIN WITH GOOGLE</h1>
         <Login />
+        <h1>LOGIN WITH GOOGLE</h1>
         <WeatherPoke />
         <PokeListInfo />
       </div>

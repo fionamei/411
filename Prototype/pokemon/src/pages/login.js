@@ -3,6 +3,9 @@ import firebase from 'firebase/compat/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 import {db, auth} from '../index';
 import { doc, getDocs, getDoc, updateDoc, arrayUnion, arrayRemove, setDoc} from "firebase/firestore";
+import './login.css';
+import logo from './weblogo.png';
+import { display } from '@mui/system';
 
 export default function Login() {
 
@@ -51,11 +54,21 @@ export default function Login() {
       });
     }
   }
-
-  return (
-    <div>
-         <button onClick={signInWithGoogle}>Log in with Google</button>
-        <h2>Hello {displayName}! </h2>
-    </div>
-  )
+  if(displayName==""){
+    return (
+      <div class="header">
+        <a class='logo'> <img src={logo} alt="WeatherMon" width='200' height='41'/> </a>
+          <div class="header-right">
+            <button class="button" onClick={signInWithGoogle}>Login</button>
+          </div>      
+      </div>
+    )
+  }else{
+    return(
+      <div class="header">
+        <a class='logo'> <img src={logo} alt="WeatherMon" width='200' height='41'/> </a>  
+          <h2 class="hello">Hello {displayName}! </h2>  
+      </div> 
+    )
+  }
 }
