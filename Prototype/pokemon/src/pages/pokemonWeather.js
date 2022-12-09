@@ -56,7 +56,7 @@ export default function WeatherPoke() {
           }} />
       </Box>
       {'pokemonData' in data &&    
-        <Card sx={{display: 'flex', width: 500, marginLeft: 52, marginY: 5}}>
+        <Card sx={{display: 'flex', width: 500, marginLeft: 52, marginY: 3.5}}>
             <Box  sx={{ width: 275 }}>
               <CardContent>
                   <h1>The weather for your current location: {zip}</h1>
