@@ -74,7 +74,7 @@ export default function PokeListInfo(){
     };
 
     const mapPokemon = pokemonData.map((pokemon,index) => {
-        if(pokemon.length==3){
+        if(pokemon.length===3){
         return(
             <table key={index} cellPadding="20" cellSpacing="0">
             <tr>
@@ -84,7 +84,7 @@ export default function PokeListInfo(){
             </tr>
             </table>
             )
-        }else if(pokemon.length==2){
+        }else if(pokemon.length===2){
             return(
                 <table key={index} cellPadding="20" cellSpacing="0">
                 <tr>

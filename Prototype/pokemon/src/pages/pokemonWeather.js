@@ -42,7 +42,7 @@ export default function WeatherPoke() {
     
     return (
     <div>
-      <Box sx={{ marginBottom: 2}}>
+      <Box sx={{ marginBottom: 2  }}>
         <TextField 
           id="input-with-sx" 
           label="Input your Zip Code!" 
