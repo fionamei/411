@@ -3,7 +3,7 @@ import axios from 'axios';
 import { db, auth } from '..';
 import { doc, getDoc } from 'firebase/firestore';
 import Card from '@mui/material/Card';
-
+import Button from '@material-ui/core/Button'
 
 export default function PokeListInfo(){
     const [pokemonData, setpokemonData] = useState([])
@@ -107,7 +107,7 @@ export default function PokeListInfo(){
 
     return (
         <div>
-        <button onClick={getSavedPokemons}>saved pokemons</button>
+        <Button onClick={getSavedPokemons} color = 'secondary' variant = 'contained'>saved pokemons</Button>
         <center> {mapPokemon} </center>
         </div>
     )
