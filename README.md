@@ -14,4 +14,7 @@ pip3 install django djangorestframework
 ```
 python3 manage.py runserver   
 ```
-
+## To run the React
+```
+npm start
+```
