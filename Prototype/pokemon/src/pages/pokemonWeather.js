@@ -1,17 +1,23 @@
 import {useState} from 'react';
 import axios from 'axios';
 import {db, auth} from '../index';
-import { doc, getDocs, getDoc, updateDoc, arrayUnion, arrayRemove, setDoc} from "firebase/firestore";
-
+import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Divider from '@mui/material/Divider';
+import "../style.css";
 
 export default function WeatherPoke() {
     const [data, setData] = useState({}); // initially holding the empty array, setPokemon helps to change its data
     const [zip, setzip] = useState('');
 
 
-    const fetchData = async () => {
+    const fetchData = async (zipcode) => {
 
-      const url = 'http://127.0.0.1:8000/api/get_pokemon_for_location/'+zip;
+      const url = 'http://127.0.0.1:8000/api/get_pokemon_for_location/'+zipcode;
       const user = auth.currentUser;
 
       axios.get(url)
@@ -29,24 +35,53 @@ export default function WeatherPoke() {
           })
     };
   
-    const handleChange = event => {
-      // it will get the value from event and set it to name using setname
+    function handleChange(event)  {
       setzip(event.target.value);
+      fetchData(event.target.value);
     };
     
     return (
     <div>
-      <input value={zip} onChange={handleChange} />
-      {zip && <button onClick={fetchData}>Click</button>}
-          {'pokemonData' in data && <div>
-            <h2>Pokemon: {data.pokemonData.name}</h2>
-            <h2>Image: <img src={data.pokemonData.image}/> </h2>
-            <h2>Id: {data.pokemonData.id}</h2>
-            <h2>Type: {data.pokemonData.type}</h2>
-            <h2>Weather: {data.weather}</h2>
-            <h2>Temperature: {data.temperature}</h2>
-            </div>
+      <Box sx={{ marginBottom: 2}}>
+        <TextField 
+          id="input-with-sx" 
+          label="Input your Zip Code!" 
+          variant="standard" 
+          onKeyPress={(ev) => {
+            if (ev.key === 'Enter') {
+              // Do code here
+              handleChange(ev);
+              ev.preventDefault();
             }
+          }} />
+      </Box>
+      {'pokemonData' in data &&    
+        <Card sx={{ display: 'flex', width: 500, marginLeft: 57, marginY: 5 }}>
+            <Box  sx={{ width: 275 }}>
+              <CardContent>
+                  <h1>The weather for your current location: {zip}</h1>
+                  <p> </p>
+                  <h2>Weather: {data.weather}</h2>
+                  <h2>Temperature: {data.temperature}°F</h2>
+              </CardContent>
+            </Box>
+
+            <Divider orientation="vertical" flexItem />
+
+            <div class="poke-info">
+                <CardMedia
+                  component="img"
+                  sx={{ height: 150 }}
+                  image={data.pokemonData.image}
+                />
+                <CardContent>
+                  You have caught:
+                  <h3>{data.pokemonData.name} (id: {data.pokemonData.id})</h3>
+                  Type: {data.pokemonData.type}
+                </CardContent>
+            </div>
+        </Card>
+      }
     </div>
     )
   }

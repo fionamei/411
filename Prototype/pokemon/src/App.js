@@ -16,7 +16,7 @@ function App() {
 return(
   <div className="App">
         <Login />
-        <h1>LOGIN WITH GOOGLE</h1>
+        <h1>Welcome to WeatherMon!</h1>
         <WeatherPoke />
         <PokeListInfo />
       </div>
